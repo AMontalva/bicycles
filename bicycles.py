@@ -10,7 +10,7 @@ class Bike_Shop():
     
     def display_inventory(self):
         for i in self.inventory:
-            print("Bike Model: {0} + Price: {1}").format(i.name, self.inventory[i])
+            print("Bike Model: {0} + Inventory: {1}").format(i.name, self.inventory[i])
     
     def see_profits(self):
         print("{0} profits are {1}".format(self.name, self.profit))
@@ -22,8 +22,20 @@ class Bike_Shop():
                 print("Model: {0} + Price: {1}").format(i.name, (i.cost_to_produce + i.cost_to_produce * .2))
     
 class Bicycle():
+    def __init__(self, name, Wheels, Frame):
+        self.name = name
+        self.weight = Frame.weight + (Wheels.weight * 2)
+        self.cost_to_produce = Frame.cost_to_produce + (Wheels.cost_to_produce * 2)
+        
+class Wheels():
     def __init__(self, name, weight, cost_to_produce):
         self.name = name
+        self.weight = weight
+        self.cost_to_produce = cost_to_produce
+
+class Frame():
+    def __init__(self, type, weight, cost_to_produce):
+        self.type = type
         self.weight = weight
         self.cost_to_produce = cost_to_produce
 
@@ -38,7 +50,7 @@ class Customer():
             Bike_Shop.sell(Bicycle)
             self.my_bicycle = Bicycle
             print("{0} owns a brand new {1}".format(self.name, self.my_bicycle.name))
-            self.funds = self.funds - Bicycle.cost_to_produce + Bicycle.cost_to_produce * .2
+            self.funds = self.funds - (Bicycle.cost_to_produce + Bicycle.cost_to_produce * .2)
             print("Spent {0}, currently have {1} left in your funds".format(Bicycle.cost_to_produce + Bicycle.cost_to_produce * .2, self.funds))
         else:
             print("Can't afford this bicycle")
