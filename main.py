@@ -1,8 +1,4 @@
-from bicycles import Bike_Shop
-from bicycles import Bicycle
-from bicycles import Wheels
-from bicycles import Frame
-from bicycles import Customer
+from bicycles import Frame, Wheels, Customer, Bicycle, Bicycle_Shop, Bicycle_Manufacturer
 
 if __name__ == '__main__':
     
@@ -16,51 +12,73 @@ if __name__ == '__main__':
     
     
     red_bicycle = Bicycle("Red Bicycle", aluminum_wheels, aluminum_frame)
-    blue_bicycle = Bicycle("Blue Bicycle", aluminum_wheels, carbon_frame)
-    green_bicycle = Bicycle("Green Bicycle", carbon_wheels, carbon_frame)
+    # blue_bicycle = Bicycle("Blue Bicycle", aluminum_wheels, carbon_frame, "Cool Bicycles Manufacturer")
+    # green_bicycle = Bicycle("Green Bicycle", carbon_wheels, carbon_frame, "Cool Bicycles Manufacturer")
     black_bicycle = Bicycle("Black Bicycle", steel_wheels, steel_frame)
-    silver_bicycle = Bicycle("Silver Bicycle", steel_wheels, carbon_frame)
-    gold_bicycle = Bicycle("Gold Bicycle", steel_wheels, steel_frame)
+    # silver_bicycle = Bicycle("Silver Bicycle", steel_wheels, carbon_frame, "Hot Bicycles Manufacturer")
+    # gold_bicycle = Bicycle("Gold Bicycle", steel_wheels, steel_frame, "Hot Bicycles Manufacturer")
     
-    bike_shop = Bike_Shop()
-    bike_shop.inventory[red_bicycle] = 6
-    bike_shop.inventory[blue_bicycle] = 8
-    bike_shop.inventory[green_bicycle] = 4
-    bike_shop.inventory[black_bicycle] = 5
-    bike_shop.inventory[silver_bicycle] = 3
-    bike_shop.inventory[gold_bicycle] = 2
+    cool_bicycles_manufacturers = Bicycle_Manufacturer("Cool Bicycles Manufacturer")
+    hot_bicycles_manufacturers = Bicycle_Manufacturer("Hot Bicycles Manufacturer")
     
-    fred = Customer("Fred", 200)
-    martha = Customer("Martha", 500)
-    jack = Customer("Jack", 1000)
+    cool_bicycles_manufacturers.build_bicycle(red_bicycle)
+    # cool_bicycles_manufacturers.build_bicycle(blue_bicycle)
+    # cool_bicycles_manufacturers.build_bicycle(green_bicycle)
     
-    bike_shop.display_inventory()
-    print("")
-    bike_shop.see_profits()
-    print("")
+    hot_bicycles_manufacturers.build_bicycle(black_bicycle)
+    # hot_bicycles_manufacturers.build_bicycle(silver_bicycle)
+    # hot_bicycles_manufacturers.build_bicycle(gold_bicycle)
     
-    bike_shop.display_within_customer_funds(fred)
+
+    cool_bicycles_manufacturers.print_products()
     print("")
-    fred.buy(bike_shop, blue_bicycle)
-    print("")
-    bike_shop.display_inventory()
-    print("")
-    bike_shop.see_profits()
-    print("")   
-    
-    bike_shop.display_within_customer_funds(martha)
-    print("")
-    martha.buy(bike_shop, green_bicycle)
-    print("")
-    bike_shop.display_inventory()
-    print("")
-    bike_shop.see_profits()
+    hot_bicycles_manufacturers.print_products()
     print("")
     
-    bike_shop.display_within_customer_funds(jack)
+    bicycle_shop = Bicycle_Shop()
+    bicycle_shop.buy_from_manufacturer(cool_bicycles_manufacturers, red_bicycle, 5)
     print("")
-    jack.buy(bike_shop, gold_bicycle)
-    print("")
-    bike_shop.display_inventory()
-    print("")
-    bike_shop.see_profits()
+    
+    print(cool_bicycles_manufacturers.profit)
+    
+    # bicycle_shop.inventory[red_bicycle] = 6
+    # bicycle_shop.inventory[blue_bicycle] = 8
+    # bicycle_shop.inventory[green_bicycle] = 4
+    # bicycle_shop.inventory[black_bicycle] = 5
+    # bicycle_shop.inventory[silver_bicycle] = 3
+    # bicycle_shop.inventory[gold_bicycle] = 2
+    
+    # fred = Customer("Fred", 200)
+    # martha = Customer("Martha", 500)
+    # jack = Customer("Jack", 1000)
+    
+    # bicycle_shop.display_inventory()
+    # print("")
+    # bicycle_shop.see_profits()
+    # print("")
+    
+    # bicycle_shop.display_within_customer_funds(fred)
+    # print("")
+    # fred.buy(bicycle_shop, blue_bicycle)
+    # print("")
+    # bicycle_shop.display_inventory()
+    # print("")
+    # bicycle_shop.see_profits()
+    # print("")   
+    
+    # bicycle_shop.display_within_customer_funds(martha)
+    # print("")
+    # martha.buy(bicycle_shop, green_bicycle)
+    # print("")
+    # bicycle_shop.display_inventory()
+    # print("")
+    # bicycle_shop.see_profits()
+    # print("")
+    
+    # bicycle_shop.display_within_customer_funds(jack)
+    # print("")
+    # jack.buy(bicycle_shop, gold_bicycle)
+    # print("")
+    # bicycle_shop.display_inventory()
+    # print("")
+    # bicycle_shop.see_profits()
